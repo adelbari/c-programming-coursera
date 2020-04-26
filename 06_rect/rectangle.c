@@ -34,10 +34,39 @@ rectangle intersection(rectangle r1, rectangle r2) {
   rectangle r;
   r1=canonicalize(r1);
   r2=canonicalize(r2);
-  r.x = max(r1.x, r2.x);
+    int width,height;
+  if (r1.x<r2.x)
+    width=r1.width;
+  else
+    width=r2.width;
+  if(r1.y<r2.y)
+    height=r1.height;
+  else
+    height=r2.height;
+  if((max(r1.x,r2.x)>(min(r1.x,r2.x)+width))||(max(r1.y,r2.y)>(min(r1.y,r2.y)+height))){
+      r.width=0;r.height=0;
+    
+  }
+   else{
+   r.x = max(r1.x, r2.x);
   r.y = max(r1.y, r2.y);
-  r.width = min(r1.width, r2.width);
-  r.height = min(r1.height, r2.height);
+  /*int rx_min,ry_min;
+  rx_min=min(r1.x,r2.x);*/
+  r.width=min((r1.x+r1.width),(r2.x+r2.width))-max(r1.x,r2.x);
+  r.height=min((r1.y+r1.height),(r2.y+r2.height))-max(r1.y,r2.y);
+  /*if(r1.x<r2.x){
+    r.x=r2.x;
+    r.width = r1.x+r1.width-r2.x;}
+  else{
+    r.x=r1.x;
+    r.width=r2.x+r2.width-r1.x;}
+  if(r1.y<r2.y){
+    r.y=r2.y;
+    r.height=r1.y+r1.height-r2.y;}
+  else{
+    r.y=r1.y;
+    r.height=r2.y+r2.height-r1.y;}*/
+   }
   return r;
 }
 
