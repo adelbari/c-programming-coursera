@@ -85,5 +85,22 @@ card_t card_from_letters(char value_let, char suit_let) {
 
 card_t card_from_num(unsigned c) {
   card_t temp;
+  assert(0=<c<52);
+  int value_temp,suite_temp;
+  suite_temp=(c/13);
+  value_temp=(c%13);
+  switch(suite_temp){
+  case  '0':temp.suite=SPADES;
+  case  '1':temp.suite=HEARTS;
+  case  '2':temp.suite=DIAMONDS;
+  case  '3':temp.suite=CLUBS;
+  }
+  switch(value_temp){
+  case  0,1,2,3,4,5,6,7,8,9:temp.value=value_temp+1;
+  case  10:temp.value=VALUE_JACK;
+  case  11:temp.value=VALUE_QUEEN;
+  case  12:temp.value=VALUE_KING;
+  case  13:temp.value=VALUE_ACE;
+  }
   return temp;
 }
