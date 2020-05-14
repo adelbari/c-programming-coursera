@@ -33,7 +33,7 @@ char value_letter(card_t c) {
   case  7: return  '0' + 7;
   case  8: return  '0' + 8;
   case  9: return  '0' + 9;
-  case  10: return  '0' + 0;
+  case  10: return  '0';
   case  VALUE_JACK: return 'J';
   case  VALUE_QUEEN: return 'Q';
   case  VALUE_KING: return  'K';
@@ -58,7 +58,28 @@ void print_card(card_t c) {
 
 card_t card_from_letters(char value_let, char suit_let) {
   card_t temp;
-  
+  switch(value_let){
+  case  '2':temp.value=2;
+  case  '3':temp.value=3;
+  case  '4':temp.value=4;
+  case  '5':temp.value=5;
+  case  '6':temp.value=6;
+  case  '7':temp.value=7;
+  case  '8':temp.value=8;
+  case  '9':temp.value=9;
+  case  '0':temp.value=10;
+  case  'J':temp.value=VALUE_JACK;
+  case  'Q':temp.value=VALUE_QUEEN;
+  case  'K':temp.value=VALUE_KING;
+  case  'A':temp.value=VALUE_ACE;
+  }
+  switch(suit_let){
+  case  's':temp.suite=SPADES;
+  case  'h':temp.suite=HEARTS;
+  case  'd':temp.suite=DIAMONDS;
+  case  'c':temp.suite=CLUBS;
+  }
+  assert_card_valid(temp);
   return temp;
 }
 
