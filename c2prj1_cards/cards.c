@@ -5,15 +5,15 @@
 
 
 void assert_card_valid(card_t c) {
-  assert((2<=c.value<=VALUE_ACE)&&(SPADES<=c.suit<=CLUBS));
+  assert((2<=c.value)&&(c.value<=VALUE_ACE)&&(SPADES<=c.suit)&&(c.suit<=CLUBS));
 
 }
 
 const char * ranking_to_string(hand_ranking_t r) {
   switch(r){
-  case  STRAIGHT FLUSH: return  "STRAIGHT FLUSH";
+  case  STRAIGHT_FLUSH: return  "STRAIGHT_FLUSH";
   case  FOUR_OF_A_KIND: return  "FOUR_OF_A_KIND";
-  case  FULL HOUSE: return  "FULL HOUSE";
+  case  FULL_HOUSE: return  "FULL_HOUSE";
   case  FLUSH: return  "FLUSH";
   case  STRAIGHT: return  "STRAIGHT";
   case  THREE_OF_A_KIND: return  "THREE_OF_A_KIND";
@@ -38,22 +38,24 @@ char value_letter(card_t c) {
   case  VALUE_QUEEN: return 'Q';
   case  VALUE_KING: return  'K';
   case  VALUE_ACE: return  'A';
+  default: return 'i';
   }
 }
 
 
 char suit_letter(card_t c) {
-  switch(c.suite){
+  switch (c.suit){
   case  SPADES: return  's';
   case  HEARTS: return  'h';
   case  DIAMONDS: return  'd';
   case  CLUBS: return  'c';
+  default: return'i';break;
   }
   
 }
 
 void print_card(card_t c) {
-  printf("%s %s", value_letter(c), suit_letter(c));
+  printf("%c %c", value_letter(c), suit_letter(c));
 }
 
 card_t card_from_letters(char value_let, char suit_let) {
@@ -74,10 +76,10 @@ card_t card_from_letters(char value_let, char suit_let) {
   case  'A':temp.value=VALUE_ACE;
   }
   switch(suit_let){
-  case  's':temp.suite=SPADES;
-  case  'h':temp.suite=HEARTS;
-  case  'd':temp.suite=DIAMONDS;
-  case  'c':temp.suite=CLUBS;
+  case  's':temp.suit=SPADES;
+  case  'h':temp.suit=HEARTS;
+  case  'd':temp.suit=DIAMONDS;
+  case  'c':temp.suit=CLUBS;
   }
   assert_card_valid(temp);
   return temp;
@@ -85,22 +87,24 @@ card_t card_from_letters(char value_let, char suit_let) {
 
 card_t card_from_num(unsigned c) {
   card_t temp;
-  assert(0=<c<52);
+  assert(0<=c&&c<52);
   int value_temp,suite_temp;
   suite_temp=(c/13);
   value_temp=(c%13);
   switch(suite_temp){
-  case  '0':temp.suite=SPADES;
-  case  '1':temp.suite=HEARTS;
-  case  '2':temp.suite=DIAMONDS;
-  case  '3':temp.suite=CLUBS;
+  case  '0':temp.suit=SPADES;
+  case  '1':temp.suit=HEARTS;
+  case  '2':temp.suit=DIAMONDS;
+  case  '3':temp.suit=CLUBS;
   }
+  temp.value=value_temp+1;
+  /*
   switch(value_temp){
   case  0,1,2,3,4,5,6,7,8,9:temp.value=value_temp+1;
   case  10:temp.value=VALUE_JACK;
   case  11:temp.value=VALUE_QUEEN;
   case  12:temp.value=VALUE_KING;
   case  13:temp.value=VALUE_ACE;
-  }
+  }*/
   return temp;
 }
