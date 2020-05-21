@@ -21,14 +21,14 @@ int main(void) {
   ranking_to_string(r9);
 
   card_t c1,c2,c3,c4;
-  c1.value=1;
-  c1.suit=1;
-  c2.value=2;
-  c2.suit=2;
+  c1.value=7;
+  c1.suit=SPADES;
+  c2.value=9;
+  c2.suit=CLUBS;
   c3.value=3;
-  c3.suit=3;
+  c3.suit=HEARTS;
   c4.value=4;
-  c4.suit=4;
+  c4.suit=SPADES;
 
   assert_card_valid(c1);
   assert_card_valid(c2);

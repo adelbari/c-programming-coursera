@@ -5,7 +5,6 @@
 
 
 void assert_card_valid(card_t c) {
-  printf("%d/n",c.value);
   assert((c.value <= VALUE_ACE)&&(c.value >=2));
   assert((c.suit <= CLUBS)&&(c.suit >=SPADES));
 }
@@ -25,22 +24,13 @@ const char * ranking_to_string(hand_ranking_t r) {
 }
 
 char value_letter(card_t c) {
-  switch(c.value){
-  case  2: return  '0' + 2;
-  case  3: return  '0' + 3;
-  case  4: return  '0' + 4;
-  case  5: return  '0' + 5;
-  case  6: return  '0' + 6;
-  case  7: return  '0' + 7;
-  case  8: return  '0' + 8;
-  case  9: return  '0' + 9;
-  case  10: return  '0';
-  case  VALUE_JACK: return 'J';
-  case  VALUE_QUEEN: return 'Q';
-  case  VALUE_KING: return  'K';
-  case  VALUE_ACE: return  'A';
-  default: return 'i';
-  }
+  char x ='0';
+  if(c.value < 10) x+= c.value;
+  else if(c.value == 11) x = 'J';
+  else if(c.value == 12) x = 'Q';
+  else if(c.value == 13) x = 'K';
+  else if(c.value == 14) x = 'A';
+  return x;
 }
 
 
