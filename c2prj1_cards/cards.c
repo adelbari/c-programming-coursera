@@ -5,8 +5,9 @@
 
 
 void assert_card_valid(card_t c) {
-  assert((2<=c.value)&&(c.value<=VALUE_ACE)&&(SPADES<=c.suit)&&(c.suit<=CLUBS));
-
+  printf("%d/n",c.value);
+  assert((c.value <= VALUE_ACE)&&(c.value >=2));
+  assert((c.suit <= CLUBS)&&(c.suit >=SPADES));
 }
 
 const char * ranking_to_string(hand_ranking_t r) {
