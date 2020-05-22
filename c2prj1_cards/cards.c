@@ -83,10 +83,10 @@ card_t card_from_num(unsigned c) {
   suite_temp=(c/13);
   value_temp=(c%13);
   switch(suite_temp){
-  case  '0':temp.suit=SPADES; break;
-  case  '1':temp.suit=HEARTS; break;
-  case  '2':temp.suit=DIAMONDS; break;
-  case  '3':temp.suit=CLUBS; break;
+  case  0:temp.suit=SPADES; break;
+  case  1:temp.suit=HEARTS; break;
+  case  2:temp.suit=DIAMONDS; break;
+  case  3:temp.suit=CLUBS; break;
   }
   temp.value=value_temp+1;
   /*
