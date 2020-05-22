@@ -88,7 +88,7 @@ card_t card_from_num(unsigned c) {
   case  2:temp.suit=DIAMONDS; break;
   case  3:temp.suit=CLUBS; break;
   }
-  temp.value=value_temp+1;
+  temp.value=value_temp+2;
   /*
   switch(value_temp){
   case  0,1,2,3,4,5,6,7,8,9:temp.value=value_temp+1;
