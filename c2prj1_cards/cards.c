@@ -11,15 +11,15 @@ void assert_card_valid(card_t c) {
 
 const char * ranking_to_string(hand_ranking_t r) {
   switch(r){
-  case  STRAIGHT_FLUSH: return  "STRAIGHT_FLUSH";
-  case  FOUR_OF_A_KIND: return  "FOUR_OF_A_KIND";
-  case  FULL_HOUSE: return  "FULL_HOUSE";
-  case  FLUSH: return  "FLUSH";
-  case  STRAIGHT: return  "STRAIGHT";
-  case  THREE_OF_A_KIND: return  "THREE_OF_A_KIND";
-  case  TWO_PAIR: return  "TWO_PAIR";
-  case  PAIR: return  "PAIR";
-  default:  return"NOTHING";
+  case  STRAIGHT_FLUSH: return  "STRAIGHT_FLUSH"; break;
+  case  FOUR_OF_A_KIND: return  "FOUR_OF_A_KIND"; break;
+  case  FULL_HOUSE: return  "FULL_HOUSE"; break;
+  case  FLUSH: return  "FLUSH"; break;
+  case  STRAIGHT: return  "STRAIGHT"; break;
+  case  THREE_OF_A_KIND: return  "THREE_OF_A_KIND"; break;
+  case  TWO_PAIR: return  "TWO_PAIR"; break;
+  case  PAIR: return  "PAIR"; break;
+  default:  return"NOTHING"; break;
   }
 }
 
@@ -36,10 +36,10 @@ char value_letter(card_t c) {
 
 char suit_letter(card_t c) {
   switch (c.suit){
-  case  SPADES: return  's';
-  case  HEARTS: return  'h';
-  case  DIAMONDS: return  'd';
-  case  CLUBS: return  'c';
+  case  SPADES: return  's'; break;
+  case  HEARTS: return  'h'; break;
+  case  DIAMONDS: return  'd'; break;
+  case  CLUBS: return  'c'; break;
   default: return'i';break;
   }
   
@@ -52,25 +52,25 @@ void print_card(card_t c) {
 card_t card_from_letters(char value_let, char suit_let) {
   card_t temp;
   switch(value_let){
-  case  '2':temp.value=2;
-  case  '3':temp.value=3;
-  case  '4':temp.value=4;
-  case  '5':temp.value=5;
-  case  '6':temp.value=6;
-  case  '7':temp.value=7;
-  case  '8':temp.value=8;
-  case  '9':temp.value=9;
-  case  '0':temp.value=10;
-  case  'J':temp.value=VALUE_JACK;
-  case  'Q':temp.value=VALUE_QUEEN;
-  case  'K':temp.value=VALUE_KING;
-  case  'A':temp.value=VALUE_ACE;
+  case  '2':temp.value=2; break;
+  case  '3':temp.value=3; break;
+  case  '4':temp.value=4; break;
+  case  '5':temp.value=5; break;
+  case  '6':temp.value=6; break;
+  case  '7':temp.value=7; break;
+  case  '8':temp.value=8; break;
+  case  '9':temp.value=9; break;
+  case  '0':temp.value=10; break;
+  case  'J':temp.value=VALUE_JACK; break;
+  case  'Q':temp.value=VALUE_QUEEN; break;
+  case  'K':temp.value=VALUE_KING; break;
+  case  'A':temp.value=VALUE_ACE; break;
   }
   switch(suit_let){
-  case  's':temp.suit=SPADES;
-  case  'h':temp.suit=HEARTS;
-  case  'd':temp.suit=DIAMONDS;
-  case  'c':temp.suit=CLUBS;
+  case  's':temp.suit=SPADES; break;
+  case  'h':temp.suit=HEARTS; break;
+  case  'd':temp.suit=DIAMONDS; break;
+  case  'c':temp.suit=CLUBS; break;
   }
   assert_card_valid(temp);
   return temp;
@@ -83,10 +83,10 @@ card_t card_from_num(unsigned c) {
   suite_temp=(c/13);
   value_temp=(c%13);
   switch(suite_temp){
-  case  '0':temp.suit=SPADES;
-  case  '1':temp.suit=HEARTS;
-  case  '2':temp.suit=DIAMONDS;
-  case  '3':temp.suit=CLUBS;
+  case  '0':temp.suit=SPADES; break;
+  case  '1':temp.suit=HEARTS; break;
+  case  '2':temp.suit=DIAMONDS; break;
+  case  '3':temp.suit=CLUBS; break;
   }
   temp.value=value_temp+1;
   /*
